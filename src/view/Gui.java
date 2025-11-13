@@ -4,11 +4,16 @@
  */
 package view;
 
+import java.awt.Color;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author TóthBarnabásBéla(Szf
  */
 public class Gui extends javax.swing.JFrame {
+    public static final Color SZIN_KI = new Color(170, 197, 152);
+    public static final Color SZIN_BE = new Color(233, 236, 47);
 
     /**
      * Creates new form Gui
@@ -50,6 +55,8 @@ public class Gui extends javax.swing.JFrame {
         txtLepes = new javax.swing.JTextField();
         mnuBar = new javax.swing.JMenuBar();
         mnuProgram = new javax.swing.JMenu();
+        mnuBetoltes = new javax.swing.JMenuItem();
+        mnuMentes = new javax.swing.JMenuItem();
         mnuKilepes = new javax.swing.JMenuItem();
 
         jPasswordField1.setText("jPasswordField1");
@@ -64,7 +71,7 @@ public class Gui extends javax.swing.JFrame {
         lblLeiras.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         lblLeiras.setText("Kapcsold fel mindegyik mezőt sárgára a lehető legkevesebb lépésből!");
 
-        pnlJatekTer.setBorder(javax.swing.BorderFactory.createTitledBorder("Játék"));
+        pnlJatekTer.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Játék", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Consolas", 0, 12))); // NOI18N
 
         btn1.setBackground(new java.awt.Color(170, 197, 152));
         btn1.setText(" ");
@@ -304,6 +311,12 @@ public class Gui extends javax.swing.JFrame {
 
         mnuProgram.setText("Program");
 
+        mnuBetoltes.setText("Betöltés...");
+        mnuProgram.add(mnuBetoltes);
+
+        mnuMentes.setText("Mentés...");
+        mnuProgram.add(mnuMentes);
+
         mnuKilepes.setText("Kilépés");
         mnuProgram.add(mnuKilepes);
 
@@ -371,6 +384,14 @@ public class Gui extends javax.swing.JFrame {
         });
     }
 
+    public void kilepes() {
+        int valasz = JOptionPane.showConfirmDialog(this, "Biztosan ki szeretnél lépni?", "Megerősítés",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (valasz == JOptionPane.YES_OPTION) {
+            dispose();
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn1;
     private javax.swing.JButton btn2;
@@ -389,7 +410,9 @@ public class Gui extends javax.swing.JFrame {
     private javax.swing.JLabel lblLeiras;
     private javax.swing.JLabel lblLepes;
     private javax.swing.JMenuBar mnuBar;
+    private javax.swing.JMenuItem mnuBetoltes;
     private javax.swing.JMenuItem mnuKilepes;
+    private javax.swing.JMenuItem mnuMentes;
     private javax.swing.JMenu mnuProgram;
     private javax.swing.JPanel pnlBeallitasok;
     private javax.swing.JPanel pnlJatek;
