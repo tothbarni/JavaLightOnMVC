@@ -22,6 +22,13 @@ public class Gui extends javax.swing.JFrame {
      */
     public Gui() {
         initComponents();
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                kilepes();
+            }
+        });
+        mnuKilepes.addActionListener(e -> kilepes());
     }
 
     /**
@@ -57,8 +64,8 @@ public class Gui extends javax.swing.JFrame {
         txtLepes = new javax.swing.JTextField();
         mnuBar = new javax.swing.JMenuBar();
         mnuProgram = new javax.swing.JMenu();
-        mnuBetoltes = new javax.swing.JMenuItem();
         mnuMentes = new javax.swing.JMenuItem();
+        mnuBetoltes = new javax.swing.JMenuItem();
         mnuKilepes = new javax.swing.JMenuItem();
 
         jPasswordField1.setText("jPasswordField1");
@@ -73,7 +80,7 @@ public class Gui extends javax.swing.JFrame {
         lblLeiras.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         lblLeiras.setText("Kapcsold fel mindegyik mezőt sárgára a lehető legkevesebb lépésből!");
 
-        pnlJatekTer.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Játék", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Consolas", 0, 12))); // NOI18N
+        pnlJatekTer.setBorder(javax.swing.BorderFactory.createTitledBorder("Játék"));
 
         btn1.setBackground(new java.awt.Color(170, 197, 152));
         btn1.setText(" ");
@@ -313,11 +320,11 @@ public class Gui extends javax.swing.JFrame {
 
         mnuProgram.setText("Program");
 
-        mnuBetoltes.setText("Betöltés...");
-        mnuProgram.add(mnuBetoltes);
-
-        mnuMentes.setText("Mentés...");
+        mnuMentes.setText("Mentés");
         mnuProgram.add(mnuMentes);
+
+        mnuBetoltes.setText("Betöltés");
+        mnuProgram.add(mnuBetoltes);
 
         mnuKilepes.setText("Kilépés");
         mnuProgram.add(mnuKilepes);

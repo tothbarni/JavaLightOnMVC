@@ -14,6 +14,16 @@
             <Property name="text" type="java.lang.String" value="Program"/>
           </Properties>
           <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="mnuMentes">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ment&#xe9;s"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mnuBetoltes">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bet&#xf6;lt&#xe9;s"/>
+              </Properties>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuKilepes">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Kil&#xe9;p&#xe9;s"/>
@@ -25,7 +35,7 @@
     </Menu>
   </NonVisualComponents>
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="0"/>
     <Property name="title" type="java.lang.String" value="Light On J&#xe1;t&#xe9;k"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
