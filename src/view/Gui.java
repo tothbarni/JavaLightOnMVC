@@ -4,8 +4,10 @@
  */
 package view;
 
+import controller.JatekTerController;
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import model.JatekTerModel;
 
 /**
  *
@@ -20,13 +22,6 @@ public class Gui extends javax.swing.JFrame {
      */
     public Gui() {
         initComponents();
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            @Override
-            public void windowClosing(java.awt.event.WindowEvent e) {
-                kilepes();
-            }
-        });
-        mnuKilepes.addActionListener(e -> kilepes());
     }
 
     /**
@@ -386,7 +381,10 @@ public class Gui extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Gui().setVisible(true);
+                Gui g = new Gui();
+                JatekTerModel m = new JatekTerModel();
+                new JatekTerController(m, g);
+                g.setVisible(true);
             }
         });
     }
