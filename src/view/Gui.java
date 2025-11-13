@@ -20,6 +20,13 @@ public class Gui extends javax.swing.JFrame {
      */
     public Gui() {
         initComponents();
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                kilepes();
+            }
+        });
+        mnuKilepes.addActionListener(e -> kilepes());
     }
 
     /**
@@ -61,7 +68,7 @@ public class Gui extends javax.swing.JFrame {
 
         jPasswordField1.setText("jPasswordField1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Light On Játék");
         setResizable(false);
 
@@ -385,13 +392,30 @@ public class Gui extends javax.swing.JFrame {
     }
 
     public void kilepes() {
-        int valasz = JOptionPane.showConfirmDialog(this, "Biztosan ki szeretnél lépni?", "Megerősítés",
+        int valasz = JOptionPane.showConfirmDialog(this, "Biztosan ki szeretnél kilépni?", "Megerősítés",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (valasz == JOptionPane.YES_OPTION) {
-            dispose();
+            System.exit(0);
         }
     }
 
+    public javax.swing.JButton getBtn1() { return btn1; }
+    public javax.swing.JButton getBtn2() { return btn2; }
+    public javax.swing.JButton getBtn3() { return btn3; }
+    public javax.swing.JButton getBtn4() { return btn4; }
+    public javax.swing.JButton getBtn5() { return btn5; }
+    public javax.swing.JButton getBtn6() { return btn6; }
+    public javax.swing.JButton getBtn7() { return btn7; }
+    public javax.swing.JButton getBtn8() { return btn8; }
+    public javax.swing.JButton getBtn9() { return btn9; }
+    public javax.swing.JButton getBtnAlap() { return btnAlap; }
+    public javax.swing.JButton getBtnRandom() { return btnRandom; }
+    public javax.swing.JButton getBtnUjJatek() { return btnUjJatek; }
+    public javax.swing.JMenuItem getMnuBetoltes() { return mnuBetoltes; }
+    public javax.swing.JMenuItem getMnuMentes() { return mnuMentes; }
+    public javax.swing.JMenuItem getMnuKilepes() { return mnuKilepes; }
+    public javax.swing.JTextField getTxtLepes() { return txtLepes; }
+ 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn1;
     private javax.swing.JButton btn2;
