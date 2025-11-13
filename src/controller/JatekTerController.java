@@ -2,7 +2,10 @@ package controller;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.PrintWriter;
+import java.util.Scanner;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import model.JatekTerModel;
 import view.Gui;
@@ -56,7 +59,7 @@ public class JatekTerController {
             frissitTeljesNezet();
         });
         nezet.getBtnUjJatek().addActionListener(e -> {
-            model.alapKezdes();
+            model.randomKezdes(new java.util.Random());
             frissitTeljesNezet();
         });
         nezet.getMnuMentes().addActionListener(e -> mentes());
@@ -73,11 +76,38 @@ public class JatekTerController {
     }
 
     private void mentes() {
-
+        JFileChooser valaszt = new JFileChooser();
+        if (valaszt.showSaveDialog(nezet) == JFileChooser.APPROVE_OPTION) {
+            try (PrintWriter iro = new PrintWriter(valaszt.getSelectedFile())) {
+                boolean[] allapot = model.getMezoAllapot();
+                for (int i = 0; i < allapot.length; i++) {
+                    if (i > 0) iro.print(' ');
+                    iro.print(allapot[i] ? 1 : 0);
+                }
+                iro.println();
+                iro.println(model.getLepesSzam());
+                JOptionPane.showMessageDialog(nezet, "Mentés kész.");
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(nezet, "Mentés sikertelen: " + ex.getMessage(), "Hiba", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }
 
     private void betoltes() {
-
+        JFileChooser valaszt = new JFileChooser();
+        if (valaszt.showOpenDialog(nezet) == JFileChooser.APPROVE_OPTION) {
+            try (Scanner sc = new Scanner(valaszt.getSelectedFile())) {
+                for (int i = 0; i < gombok.length; i++) {
+                    if (!sc.hasNextInt()) throw new IllegalArgumentException("Hiányzó mező érték");
+                    model.setMezoAllapotIndex(i, sc.nextInt() == 1);
+                }
+                model.setLepesSzam(sc.hasNextInt() ? sc.nextInt() : 0);
+                frissitTeljesNezet();
+                JOptionPane.showMessageDialog(nezet, "Betöltés kész.");
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(nezet, "Betöltés sikertelen: " + ex.getMessage(), "Hiba", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }
 
     private void kilepes() {
